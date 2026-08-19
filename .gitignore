@@ -34,3 +34,6 @@ venv/
 .vscode/settings.json
 
 implementation.md
+
+# Ingestion CSVs (too large for git)
+ingestion/data/
