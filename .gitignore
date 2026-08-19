@@ -1,0 +1,36 @@
+.git
+.env
+.DS_Store
+airflow_settings.yaml
+__pycache__/
+astro
+.venv
+.astro/standalone/
+.astro/worktrees/
+airflow-webserver.pid
+webserver_config.py
+airflow.cfg
+airflow.db
+.astro/*.local.yml
+.astro/*.local.yaml
+
+**/.astro/dbt_metadata.json
+**/.astro/manifest.slim.json
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Local secrets
+.env.*
+!.env.example
+
+# Python
+*.pyc
+venv/
+
+# OS/editor
+.vscode/settings.json
+
+implementation.md
