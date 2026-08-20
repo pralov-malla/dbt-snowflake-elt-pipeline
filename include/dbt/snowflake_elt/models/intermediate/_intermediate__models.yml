@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_order_items
+    description: Enriched line items joined to order context with calculated total cost per item.
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+
+  - name: int_order_summary
+    description: Order-level aggregation of item count, price, freight, and total value.
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null

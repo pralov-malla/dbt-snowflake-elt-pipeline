@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: olist
+    description: Brazilian E-Commerce dataset by Olist, loaded from Kaggle CSVs into the RAW schema.
+    database: DBT_DB
+    schema: RAW
+
+    tables:
+      - name: orders
+        identifier: ORDERS
+        description: Raw order header records with timestamps and delivery status.
+        columns:
+          - name: order_id
+            data_tests:
+              - unique
+              - not_null
+
+      - name: order_items
+        identifier: ORDER_ITEMS
+        description: Raw order line item records with pricing and freight.
+        columns:
+          - name: order_id
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: source('olist', 'orders')
+                    field: order_id
+
+      - name: order_payments
+        identifier: ORDER_PAYMENTS
+        description: Raw payment records per order.
+        columns:
+          - name: order_id
+            data_tests:
+              - not_null
+
+      - name: products
+        identifier: PRODUCTS
+        description: Raw product catalog with category names.
+        columns:
+          - name: product_id
+            data_tests:
+              - unique
+              - not_null
